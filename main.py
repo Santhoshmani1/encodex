@@ -2,6 +2,7 @@ import argparse
 from utils.banner import print_banner
 from utils.formats import formats
 from utils.customhelp import CustomHelpAction
+from utils.decodejwt import decode_jwt
 
 def handle_encode(args):
     """Encodes the data using the specified format"""
@@ -13,11 +14,20 @@ def handle_encode(args):
 
 def handle_decode(args):
     """Handle the 'decode' command and decode the data using the specified format"""
-    decoder = formats.get(args.format)()
-    if args.format == "base64":
-        print(decoder.decode(args.data, url_safe=args.url_safe))
+    if args.format == "jwt":
+        try:
+            header, payload, signature = decode_jwt(args.data)
+            print("Header:", header)
+            print("Payload:", payload)
+            print("Signature:", signature)
+        except Exception as e:
+            print(f"Error decoding JWT: {e}")
     else:
-        print(decoder.decode(args.data))
+        decoder = formats.get(args.format)()
+        if args.format == "base64":
+            print(decoder.decode(args.data, url_safe=args.url_safe))
+        else:
+            print(decoder.decode(args.data))
 
 def show_info(args) -> str:
     """Show information about the encoding format"""
@@ -41,7 +51,7 @@ def main():
     encode_parser.add_argument("--url-safe", action="store_true", help="Use URL-safe Base64 encoding")
 
     decode_parser = subparsers.add_parser("decode", help="Decode data")
-    decode_parser.add_argument("format", choices=["base64", "ascii", "url", "hex", "html"], help="Decoding format")
+    decode_parser.add_argument("format", choices=["base64", "ascii", "url", "hex", "html", "jwt"], help="Decoding format")
     decode_parser.add_argument("data", help="Data to decode")
     decode_parser.add_argument("--url-safe", action="store_true", help="Use URL-safe Base64 decoding")
 
