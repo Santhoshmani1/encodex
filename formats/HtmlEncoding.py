@@ -24,4 +24,4 @@ class HTMLEncoding(EncodingFormat):
         For example, the character '<' is encoded as '&lt;' and the character '>' is encoded as '&gt;'.
 
         Read More : https://datatracker.ietf.org/doc/html/rfc1866      
-        """        
+        """

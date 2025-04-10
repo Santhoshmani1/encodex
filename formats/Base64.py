@@ -1,8 +1,8 @@
 import base64
-import pyfiglet
 
 from lib.EncodingFormat import EncodingFormat
 from utils.banner import print_banner
+
 
 class Base64(EncodingFormat):
     def encode(self, data: str, url_safe: bool = False) -> str:

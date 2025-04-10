@@ -9,5 +9,5 @@ formats = {
     "ascii": ASCII,
     "url": URLEncoding,
     "hex": HexEncoding,
-    "html": HTMLEncoding
+    "html": HTMLEncoding,
 }

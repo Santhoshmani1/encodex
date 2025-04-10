@@ -5,11 +5,11 @@ from utils.banner import print_banner
 class ASCII(EncodingFormat):
     def encode(self, data: str) -> str:
         """Encodes the given data into ASCII format"""
-        return ''.join(str(ord(char)) for char in data)
+        return "".join(str(ord(char)) for char in data)
 
     def decode(self, data: str) -> str:
         """Decodes the given ASCII data"""
-        return ''.join(chr(int(num)) for num in data.split())
+        return "".join(chr(int(num)) for num in data.split())
 
     def info(self) -> str:
         print_banner()

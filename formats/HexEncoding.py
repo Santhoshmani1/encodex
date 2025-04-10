@@ -1,6 +1,7 @@
 from lib.EncodingFormat import EncodingFormat
 from utils.banner import print_banner
 
+
 class HexEncoding(EncodingFormat):
     def encode(self, data: str) -> str:
         """Encodes the given data into Hex format"""
@@ -25,5 +26,3 @@ Hex encoding is case-insensitive and is usually represented in uppercase.
 
 Read More: https://datatracker.ietf.org/doc/html/rfc4648#section-8
         """
-
-        

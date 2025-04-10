@@ -3,6 +3,7 @@ import urllib.parse
 from lib.EncodingFormat import EncodingFormat
 from utils.banner import print_banner
 
+
 class URLEncoding(EncodingFormat):
     def encode(self, data: str) -> str:
         """Encodes the given data into URL encoding format"""
